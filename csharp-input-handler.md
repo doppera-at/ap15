@@ -6,7 +6,6 @@ times to repeat before aborting) and you can focus on writing your implementatio
 In addition, this exercise is useful in any language when it comes to handling user input interactively.
 
 
-
 ## Getting a string
 
 Let's tackle this problem using C#, as this is the language currently used in our class. A input loop for a string is relatively straightforward:
@@ -37,6 +36,7 @@ namespace Utilities {
 
 This way, we just import this Utilities-Class using the keyword `using` and we can use it, but it gets interesting when it comes to getting numbers, boolean values or options from a list!
 The name without a type and the generic usage string are intentional, as we will be using this method in all other methods, so it is really easy to change the prompt ^^
+
 
 ## Getting numbers
 
@@ -75,6 +75,7 @@ public static string InputOption(string usage, List<string> options) {
 }
 ```
 
+
 ## Boolean values
 
 After this, boolean values are a breeze:
@@ -103,7 +104,3 @@ Best thing to do now is to implement the rest of the functions yourself, but kee
 * Number input within a specific range
 * A single character
 * One word when the input consists more than one
-
-## Hints
-
-A positive number as input is actually just a number with a minimum value. This can be reused when specifying the whole range.
