@@ -25,7 +25,7 @@ Even if we would not trim the input, 2 lines are always needed. Information for 
 namespace Utilities {
   class ConsoleInputHandler {
 
-    public static Input(string usage) {
+    public static string Input(string usage) {
       Console.Write($"{usage}> ");
       string input = Console.ReadLine() ?? string.Empty;
       return input.Trim();
@@ -43,7 +43,7 @@ The name without a type and the generic usage string are intentional, as we will
 When dealing with numbers, it is easy to mistype and dealing with a loop each time you want to have a number as input is not just tedious but error prone. Let's write the algorithm once and let the user deal with repeated prompts.
 
 ```c
-public static InputInteger(string usage) {
+public static int InputInteger(string usage) {
   while (true) { // yes, an infinite loop is used, as we return when we're finished
     string input = Input($"Input integer for {usage}"); // we use the basic input function
     if (int.TryParse(input, out int result)) {
@@ -56,24 +56,6 @@ public static InputInteger(string usage) {
 
 We get an `input` and if `TryParse` was successful, we return the result.
 
-## Boolean values
-
-Sometimes we want to ask a question and get a reaction from the user. Is he happy with the decision? Gladly, it's really simple: We can just see what the user input is and depending on a list of possible values we return the boolean value.
-
-public static InputBoolean(string usage) {
-  while (true) {
-    string input = Input($"{usage} (y/n)");
-    if (new []{"true", "yes", "y", "ja", "j", "sicha", "klar", "gerne", "sowieso"}.Contains(input)) {
-      return true;
-    }
-    if (new []{"false", "no", "n", "nein", "oh no", "please don't", "bist deppad?", "nope"}.Contains(input)) {
-      return false;
-    }
-  }
-}
-
-As we can see, this list can be easily adjusted and we get a clean boolean value back, while utilizing our already written base method.
-When now thinking about the `options from a list` from earlier, it is already clear to see that this is already such a method.
 
 ## Options from a list
 
@@ -81,7 +63,7 @@ Using lists to restrict options comes before we even get a `true/false` value? T
 But actually, it is - when thinking about what is necessary for a boolean value, we have the user input in the form of a string and checking it against one or more keywords.
 
 ```c
-public static InputOption(string usage, List<string> options) {
+public static string InputOption(string usage, List<string> options) {
   // TODO: Add display of options
   while (true) {
     string input = Input($"{usage} [options]");
@@ -98,10 +80,11 @@ public static InputOption(string usage, List<string> options) {
 After this, boolean values are a breeze:
 
 ```c
-public static InputBoolean(string usage) {
+public static bool InputBoolean(string usage) {
   // These should be declared as static members, so they are on top of the file for easy configuration
   string[] optionsYes = new(){"true", "yes", "y", "ja", "j", "sicha", "klar", "gerne", "sowieso"};
   string[] optionsNo = new(){"false", "no", "n", "nein", "oh no", "please don't", "bist deppad?", "nope"};
+  // Using list.Concat(otherList) we create a new list containing all values of both lists
   string input = InputOption(usage, optionsYes.Concat(optionsNo));
   if (optionsYes.Contains(input)) {
     return true;
