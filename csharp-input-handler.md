@@ -64,7 +64,6 @@ But actually, it is - when thinking about what is necessary for a boolean value,
 
 ```c
 public static string InputOption(string usage, List<string> options) {
-  // TODO: Add display of options
   while (true) {
     string input = Input($"{usage} [options]");
     if (options.Contains(input)) {
