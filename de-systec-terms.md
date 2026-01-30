@@ -19,15 +19,45 @@ Sozialen Netzwerke und Daten
 
 
 ## Netzwerk
-Netzwerk bzw. Netzwerktypen
-LAN
-Netzwerk-Administrator
-Persönlicher Hotspot / Tethering
-SSID
-WLAN, Wi-Fi oder WiFi
-VPN
-WEP
-WPA, WPA2, WPA3
+
+### Netzwerk bzw. Netzwerktypen
+*LAN*: Lokales Netzwerk im allgemeinen
+*WLAN*: Ein drahtloses, lokal Netzwerk
+*VPN*: Verschlüsselte Verbindung die Netzwerke über das Internet verbindet
+
+### LAN
+*L*ocal *A*rea *N*etwork: Ein lokales Netzwerk, das eine Firma, Schule oder die eigene 
+Wohnung umfasst und womit sich Geräte mittels Kabel oder auch drahtlos verbinden können.
+
+### Netzwerk-Administrator
+Konfiguriert, überwacht und betreibt Datennetze für Computer. Seine Aufgaben beinhalten 
+unter Anderem die Authentifizierung der Benutzer, Rechtsverwaltung, Updates durchführen.
+Die Netzwerknutzung überwachen, eventuelle Malware entfernen und das Netzwerk schützen.
+
+### Persönlicher Hotspot / Tethering
+Wenn kein WLAN-Netzwerk zur Verfügung steht, kann man mittels Smartphones einen persönlichen 
+Hotspot zur Verfügung stellen. Dadurch wird das Smartphone zu einem WLAN-Router zu dem sich 
+Geräte verbinden und die mobilen Daten des Smartphones nutzen können.
+Es ist sehr wichtig ein sicheres Passwort zu vergeben.
+
+### SSID
+*S*ervice *S*et *Id*entifier: Ist der Name eines WLAN-Netzwerkes und kann nicht nur geändert 
+sondern auch versteckt werden. Damit taucht das Netzwerk nicht mehr in der Liste der 
+verfügbaren Netzwerke auf.
+
+### WLAN, Wi-Fi oder WiFi
+*W*ireless *L*ocal *A*rea *N*etwork bezeichnet ein lokales Funknetzwerk.
+
+### VPN
+*V*irtual *P*rivate *N*etwork: Eine verschlüsselte Verbindung die Netzwerke über das Internet 
+verbindet. Wird von Firmen verwendet um Mitarbeitern von Außen Zugriff auf das Firmennetzwerk 
+zu ermöglichen, aber auch von Privatanwendern um schwerer nachverfolgbar zu sein.
+
+### WEP
+Veraltetes Verfahren zum Sichern von Netzwerken, das als `nicht mehr sicher` gilt.
+
+### WPA, WPA2, WPA3
+Abkürzung für *W*i-Fi *P*rotected *A*ccess
 
 
 ## Datenschutz
