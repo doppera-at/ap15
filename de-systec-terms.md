@@ -2,8 +2,16 @@
 
 
 ## Allgemeines
-Attachment
-App Store
+
+### Attachment
+
+### App Store
+Offizielle App-Stores bieten Software an die in den meisten Fällen nicht nur auf Malware 
+überprüft sondern auch ausgiebig getestet wurde.
+Programme aus nicht offiziellen App-Stores können nicht nur potentiell Malware enthalten, 
+auch könnten persönliche Daten übertragen, unnötig Ressourcen verbraucht oder nicht klar 
+kommunizierte Kosten verursacht werden.
+
 Benutzerkonto & Netzwerkkonto
 Cloudspeicher
 Cloud-Computing
@@ -71,8 +79,16 @@ Privatsphäre
 
 
 ## Datensicherheit
-Ablaufplanung
-Backup
+
+### Ablaufplanung
+Um seine Daten zu sichern ist es sinnvoll eine Ablaufplanung zu erstellen, in der festgelegt wird 
+wann welche Daten wie gesichert werden.
+
+### Backup
+Mit einem Backup werden Datensicherungen bezeichnet, die im besten Fall regelmäßig erstellt und 
+sicher aufbewahrt werden: z.B. in einem anderen Gebäude, auf entfernten Rechnern, in einer Cloud 
+oder auch in einem Tresor.
+
 Datensicherheit
 Datenvernichtung
 Information-Diving
@@ -83,8 +99,16 @@ Vertraulichkeit
 
 
 ## Schadsoftware / Malware
-Adware
-Backdoor
+
+### Adware
+bezeichnet Software die zu Werbezwecken eingesetzt wird und oftmals unabsichtlich mit anderen 
+Programmen mitinstalliert wird, da man sie bei deren Installation explizit abwählen muss. Der Begriff 
+setzt sich aus *ad*vertisement und soft*ware* zusammen.
+
+### Backdoor
+Wenn Schadsoftware eine Backdoor im System eingerichtet hat, kann dieses von außen von einem Dritten 
+ferngesteuert und für kriminelle Zwecke verwendet werden.
+
 Botnet
 Computerviren
 Computerwurm
@@ -117,9 +141,20 @@ Social-Engineering
 
 
 ## Security
-Antiviren-Programme
-Authentifizierung
-App-Berechtigung
+
+### Antiviren-Programme
+Prüfen im Hintergrund alle laufenden Aktivitäten, spüren Computerviren (z.B. Würmer oder Trojaner) 
+auf und blockieren sie - meist werden verdächtige Dateien nicht direkt gelöscht sondern in Quarantäne 
+gestellt und somit unschädlich gemacht, bevor der Nutzer entscheidet was dann im Endeffekt passieren 
+soll.
+Beispiele: `Windows Defender`, `Avira`, `Norton Antivirus`
+
+### Authentifizierung
+
+### App-Berechtigung
+Auf mobilen Geräten müssen Apps nach Berechtigungen fragen um Zugriff auf bestimmte Daten zu erhalten. 
+Diese können neben Bildern und Fotos auch den Zugriff auf Mikrofon, Standort oder Kamera betreffen.
+
 Biometrische Verfahren
 Digitale Signatur
 Digitales Zertifikat
