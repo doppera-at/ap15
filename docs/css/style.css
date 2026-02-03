@@ -13,9 +13,37 @@ body {
 }
 
 
-nav li {
-    margin-right: 0.5rem;
-    display: inline;
+a {
+    text-decoration: none;
+}
+a::before {
+    content: "> ";
+}
+
+
+#navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#navigation section {
+    padding: 1rem;
+    border-left: 1px solid #000;
+    height: 10rem;
+}
+#navigation section:first-child {
+    border-left: none;
+}
+#navigation h3 {
+    margin-left: 1rem;
+}
+#navigation ul {
+    padding: 0;
+    margin: 0;
+}
+#navigation li {
+    margin-top: 0.2rem;
+    list-style: none;
 }
 
 
