@@ -34,11 +34,11 @@ function nextExercise() {
     let number = Math.floor(Math.random() * (maxNum - minNum) + minNum);
     let fromBase = Math.floor(Math.random() * (maxBase - minBase) + minBase);
     let toBase = Math.floor(Math.random() * (maxBase - minBase) + minBase);
-    console.log(`Number: ${number}, FromBase: ${fromBase}, ToBase: ${toBase}`);
 
     let result = convertToBase(number, toBase);
     number = convertToBase(number, fromBase);
 
+    // console.log(`Number: ${number}, FromBase: ${fromBase}, ToBase: ${toBase}, Result: ${result}`);
     exercises.push({num: number, fromBase: fromBase, toBase: toBase, result: result});
     showExercises();
     window.scrollTo(0, document.body.scrollHeight);
