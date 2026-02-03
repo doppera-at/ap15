@@ -1,27 +1,13 @@
-const NUMBER_STRING = "0123456789abcdefghijklmnopqrstuvwxyz";
+import { convertToBase, minNumber, maxNumber } from './utils-numbers.js';
 
 let minBase = 2;
 let maxBase = 20;
 let numDigits = 2;
 
-let exercises = [];
+let minNum = 0;
+let maxNum = 0;
 
-function convertToBase(number, base) {
-    console.log(`CONVERT TO BASE: ${number} into ${base}`);
-    let result = [];
-    while (number > 0) {
-        result.push(number % base);
-        number = Math.floor(number / base);
-        console.log(`  ${number} % ${base} = ${number % base}, ${number} / ${base} = ${number / base}`);
-    }
-    console.log(`  --Result: ${JSON.stringify(result)}`);
-    let returnString = "";
-    for (let i = result.length-1; i >= 0; i--) {
-        returnString += NUMBER_STRING[result[i]];
-    }
-    console.log(`  --Return: ${returnString}`);
-    return returnString;
-}
+let exercises = [];
 
 function readInputs() {
     minBase = parseInt(document.getElementById("fromBaseSelect").value);
@@ -37,15 +23,12 @@ function startExercises() {
     readInputs();
     document.getElementById("exerciseForm").classList.add("hidden");
     document.getElementById("exercises").classList.remove("hidden");
-    console.log("Exercises started!");
-    console.log(`MinBase: ${minBase}`);
-    console.log(`MaxBase: ${maxBase}`);
-    console.log(`NumDigits: ${numDigits}`);
+    minNum = minNumber(numDigits);
+    maxNum = maxNumber(numDigits);
+    console.log(`Exercise started! MinNum: ${minNum}, MaxNum: ${maxNum}, NumDigits: ${numDigits} (from ${minNum} to ${maxNum})`);
     nextExercise();
 }
 function nextExercise() {
-    minNum = minNumber(numDigits);
-    maxNum = maxNumber(numDigits);
     console.log(`MinNum: ${minNum}, MaxNum: ${maxNum}`);
 
     let number = Math.floor(Math.random() * (maxNum - minNum) + minNum);
@@ -77,19 +60,6 @@ function showExercises() {
     }
 }
 
-function minNumber(numDigits) {
-    switch (numDigits) {
-        case 2: return 10;
-        case 3: return 100;
-        case 4: return 1000;
-        default: return 10000;
-    }
-}
-function maxNumber(numDigits) {
-    switch (numDigits) {
-        case 2: return 99;
-        case 3: return 999;
-        case 4: return 9999;
-        default: return 99999;
-    }
-}
+
+document.getElementById("startButton").addEventListener("click", startExercises);
+document.getElementById("nextButton").addEventListener("click", nextExercise);
