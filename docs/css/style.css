@@ -13,11 +13,15 @@ body {
 }
 
 
-a {
+a, a:visited, a:active {
+    color: darkblue;
     text-decoration: none;
 }
 a::before {
     content: "> ";
+}
+a:hover {
+    color: purple;
 }
 
 
@@ -28,8 +32,8 @@ a::before {
 }
 #navigation section {
     padding: 1rem;
-    border-left: 1px solid #000;
-    height: 10rem;
+    border-left: 1px solid #AAA;
+    height: 6rem;
 }
 #navigation section:first-child {
     border-left: none;
