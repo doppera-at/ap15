@@ -33,6 +33,7 @@ function startExercises() {
     }
     document.getElementById("exerciseForm").classList.add("hidden");
     document.getElementById("exercises").classList.remove("hidden");
+    document.getElementById("heading").innerText = `Calculation exercises - Base ${base}`;
 
     if (addition) possibleOperations.push("addition");
     if (subtraction) possibleOperations.push("subtraction");
