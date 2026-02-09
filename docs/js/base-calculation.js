@@ -66,10 +66,12 @@ function nextExercise() {
             break;
         case "multiplication":
             secondNumber = Math.floor(Math.random() * (maxNumber(1) - minNumber(1)) + minNumber(1));
+            if (secondNumber < 2) secondNumber = 2; // avoid multiplying by a number smaller than 2
             result = firstNumber * secondNumber;
             break;
         case "division":
             secondNumber = Math.floor(Math.random() * (maxNumber(1) - minNumber(1)) + minNumber(1));
+            if (secondNumber < 2) secondNumber = 2; // avoid dividing by a number smaller than 2
             result = Math.floor(firstNumber / secondNumber);
             break;
         default:
