@@ -25,27 +25,38 @@ a:hover {
 }
 
 
-#navigation {
+
+header {
+    text-align: center;
+}
+header h1 {
+    margin-bottom: -1rem;
+}
+
+
+nav {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#navigation section {
+nav section {
     padding: 1rem;
-    border-left: 1px solid #AAA;
+    border-top: 1px solid #AAA;
     height: 6rem;
 }
-#navigation section:first-child {
-    border-left: none;
+nav section:first-child {
+    border-top: none;
 }
-#navigation h3 {
+nav h3 {
+    font-size: 1rem;
     margin-left: 1rem;
 }
-#navigation ul {
+nav ul {
     padding: 0;
     margin: 0;
 }
-#navigation li {
+nav li {
     margin-top: 0.2rem;
     list-style: none;
 }
@@ -66,4 +77,21 @@ input, select {
 
 .hidden {
     display: none;
+}
+
+
+
+@media screen and (min-width: 600px) {
+    nav {
+        flex-direction: row;
+    }
+
+    nav section {
+        border-top: none;
+        border-left: 1px solid #AAA;
+        height: auto;
+    }
+    nav section:first-child {
+        border-left: none;
+    }
 }
