@@ -28,7 +28,7 @@ Nachdem man einen Ordner erstellt hat in dem man arbeiten möchte und sich im *T
 
 ### Ein Repository clonen
 Alternativ kann man auch auf der Seite des Hosting-Providers ein leeres Repository erstellen und dieses dann klonen, wodurch das online verfügbare Repository in einen Ordner auf dem lokalen Dateisystem geladen wird. Dabei werden nicht nur die bereits bestehenden Dateien geladen, sondern auch die gesammte Vergangenheit mit allen Änderungen die vorgenommen worden sind.
-Dies funktioniert auch mit Repositories die anderen Nutzern gehören aber öffentlich in deren Profil einsehbar sind.
+Dies funktioniert auch mit Repositories die anderen Nutzern gehören aber öffentlich in deren Profil einsehbar sind, doch Änderungen können nicht einfach so wieder hochgeladen werden - dazu später mehr.
 - HTTPS: `git clone https://www.github.com/doppera-at/ap15.git` - hierfür wird ein [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) benötigt
 - SSH: `git clone git@github.com:doppera-at/ap15.git` - hierfür wird ein [SSH-Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh) benötigt (meine bevorzugte Methode)
 - [GitHub-CLI](https://cli.github.com/): `gh repo clone doppera-at/ap15.git` - bisher noch nicht damit gearbeitet, da es ein extra zu installierendes Tool von GitHub ist und ich lieber meinen Workflow universell nutzen können möchte.
