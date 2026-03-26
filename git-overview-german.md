@@ -34,6 +34,7 @@ Dies funktioniert auch mit Repositories die anderen Nutzern gehören aber öffen
 - [GitHub-CLI](https://cli.github.com/): `gh repo clone doppera-at/ap15.git` - bisher noch nicht damit gearbeitet, da es ein extra zu installierendes Tool von GitHub ist und ich lieber meinen Workflow universell nutzen können möchte.
 
 ### Bestimmte Dateien und Ordner ausschließen
+Da man nicht immer alle Dateien synchronisieren möchte (wie zum Beispiel VSCode spezifische Projektdaten, Datenbanken Dateien mit sensiblen Daten) gibt es eine Möglichkeit um diese auszuschließen. Dazu muss man lediglich eine `.gitignore`-Datei im gleichen Verzeichnis wo sich auch der `.git`-Ordner befindet erstellen und dort die Dateien eintragen. Dabei kann man entweder den kompletten Namen angeben, mit `*.txt` alle `txt`-Dateien ignorieren oder auch ganze Ordner mit einem Schrägstrich am Ende `example_folder/` angeben, die dann nicht von Git getrackt werden.
 
 
 ## Änderungen vornehmen
