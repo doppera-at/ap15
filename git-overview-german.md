@@ -37,12 +37,29 @@ Dies funktioniert auch mit Repositories die anderen Nutzern gehören aber öffen
 Da man nicht immer alle Dateien synchronisieren möchte (wie zum Beispiel VSCode spezifische Projektdaten, Datenbanken Dateien mit sensiblen Daten) gibt es eine Möglichkeit um diese auszuschließen. Dazu muss man lediglich eine `.gitignore`-Datei im gleichen Verzeichnis wo sich auch der `.git`-Ordner befindet erstellen und dort die Dateien eintragen. Dabei kann man entweder den kompletten Namen angeben, mit `*.txt` alle `txt`-Dateien ignorieren oder auch ganze Ordner mit einem Schrägstrich am Ende `example_folder/` angeben, die dann nicht von Git getrackt werden.
 
 
+## Infos zu aktuellem Stand oder Veränderungen erhalten
+Einer der wichtigsten Befehle bei der Nutzung von Git ist `git status`. Hiermit wird einem angezeigt welche Änderungen gemacht worden sind die noch nicht festgelegt worden sind. Bevor man pusht oder die Arbeit für den heutigen Tag beenden möchte lohnt sich ein Blick auf den aktuellen Status des Repositories, auch wenn man die Änderungen noch nicht pushen möchte.
+
+
 ## Änderungen vornehmen
 Ganz gleich wie man Dateien jetzt genau verändert (VSCode, Visual Studio, Neovim oder sogar Notepad), löscht oder erstellt, Git erkennt diese Änderungen automatisch. Wie viele Änderungen in einem einzelnen `Commit` zusammengefasst werden ist Geschmackssache und wird unterschiedlich gehandhabt, mit Quellen die sagen dass die Commits "so klein als möglich" sein sollten, während Andere wieder von "vollständig zusammenhängenden Ánderungen" sprechen. Grundsätzlich gilt es eine Balance zu finden: Nicht jede Zeile einzeln zu committen, aber auch nicht ein ganzes Feature fertig zu programmieren (dafür bieten sich `Branches` eigentlich an, dazu später mehr).
 Ein Commit ist nicht auf eine einzelne Datei gebunden und kann auch mehrere Dateien betreffen - wenn man zum Beispiel auf einer Webseite ein neues Div einfügt und dafür natürlich auch ein CSS-styling bereitstellt, so bietet es sich an diese beiden Änderungen gemeinsam zu committen anstatt jede Datei für sich genommen committed. Hier gilt es Git so viel wie möglich in seinen Workflow zu integrieren um langsam ein Gefühl für das ganze System zu bekommen und auch (wenn möglich) bei Kollegen nachzufragen wie Diese es so handhaben. Auch gibt es manchmal unterschiede der Handhabung von Firma zu Firma, also sollte man sich ohnehin immer nach den Gepflogenheiten erkundigen.
 
 ### Staging
+Nachdem Änderungen vorngenommen worden sind, werden sie mit `git status` als **unstaged** gezeigt - das bedeutet, dass diese Veränderungen noch nicht für ein **Commit** vorgesehen sind. Um diese in ein **Commit** aufzunhemen, muss man sie erst hinzufügen: `git add filename.ext`. Damit werden alle Änderungen dieser Datei "gestaged", also für ein Kommitment vorgesehen. Hat man unabsichtlich eine Datein in diesen Zustand versetzt und möchte das zurücknehmen, kann man das mit `git restore --staged filename.ext` machen: der Befehl `restore` ist für weit mehr gut als nur Änderungen zurückzunehmen, weshalb mit der Flag `--staged` erst klargestellt wird, dass sich dieses Zurücksetzen auf Änderungen bezieht die sich grade im **Staging** befinden.
+Wenn man alle Dateien hinzufügen möchte, kann man das mit `git add .` machen - der Punkt steht hier für "alle".
+
 ### Commits
+Hat man sich dafür Entschieden Änderungen auch wirklich durchzuführen, dann kann man sich zu ihnen kommitten, was alle Veränderungen mit einer Nachricht versieht und in die **Git-History** übernimmt. Dafür gibt es mehrere Wege, die folgende Aufzählung ist nur ein kleiner Aufzug und um alle Möglichkeiten auszuschöpfen kann man sich gerne mehr mit diesem Befehl auseinandersetzen:
+- `git commit`: Öffnet den als Standard definierten Editor, in dem man seine Nachricht schreibt.
+- `git commit -m "Beschreibung der gemachten Änderungen"`: Überspringt das Öffnen des Editors, indem man die **Commit-Nachricht** direkt mit angibt.
+- `git commit -a -m "Beschreibung aller Änderungen"`: Anstatt Dateien zuerst in den **Staged**-Zustand zu versetzen, kann mittels `-a` auch angegeben werden dass man alle Änderungen committen möchte.
+Commit-Nachrichten sollten kurz und prägnant über das, was in diesem **Commit** verändert wurde, informieren - wobei es auch hier wieder die verschiedensten Meinungen gibt wie detailliert Commit-Nachrichten sein sollen. Jedoch gibt es schon ein paar Regeln die sich im Laufe der Zeit herauskristallisiert haben und an die man sich halten sollte, um eine gemeinsame Struktur beizubehalten:
+- Die erste Zeile beinhaltet eine kurze, stichwortartige Zusammenfassung was passiert ist, beginnend mit einem Verb: `add functionality to sort products by price`
+- Eine leere Zeile trennt diesen kurzen Überblick
+- Danach kann man tiefer ins Detail gehen wenn man das Gefühl hat, dass mehr Information hilfreich wäre - dafür können auch gerne Aufzählungen verwendet werden.
+Meistens belasse ich meine Nachrichten bei einer Zeile, da ich meine Commits relativ klein halte - das ist jedoch subjektiv und man soll seinen eigenen Stil finden (der vielleicht noch durch Firma / Kollegen oder OpenSource-Projekte beeinflusst werden). Was jedoch wichtig ist ist die Unterscheidung zwischen der kurzen Übersicht und den detaillierteren Informationen, da in der **Git-History** meist nur die erste Zeile angezeigt wird und somit aussagekräftig sein soll.
+
 ### Fetch
 ### Pull
 ### Push
