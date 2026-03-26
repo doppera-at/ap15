@@ -39,6 +39,8 @@ Da man nicht immer alle Dateien synchronisieren möchte (wie zum Beispiel VSCode
 
 ## Infos zu aktuellem Stand oder Veränderungen erhalten
 Einer der wichtigsten Befehle bei der Nutzung von Git ist `git status`. Hiermit wird einem angezeigt welche Änderungen gemacht worden sind die noch nicht festgelegt worden sind. Bevor man pusht oder die Arbeit für den heutigen Tag beenden möchte lohnt sich ein Blick auf den aktuellen Status des Repositories, auch wenn man die Änderungen noch nicht pushen möchte.
+
+### Die Commit-History anzeigen
 Um die vergangenen Änderungen einzusehen gibt es den Befehl `git log`. Mit diesem kann man sich die letzten gemachten Änderungen anzeigen lassen, mitsamt den Infos darüber *wann* eine Änderung von *wem* gemacht wurde und *was* sie beinhaltet - was allerdings in einer grafischen Oberfläche oftmals einfacher verständlich angezeigt wird (wobei auch hier gilt dass man flexibler bleibt wenn man sich mit der Anzeige im Terminal vertraut macht). Um die **History** besser visualisieren zu können gibt es noch zusätzliche Optionen mit denen man den Output dieses Befehls verändern kann:
 - `git log`: Zeigt die letzten Commits in der History einfach nacheinander an (mit den Pfeiltasten kann man weiter zurück navigieren, `q` beendet diese Ansicht)
 - `git log --graph`: Mit der `--graph`-Option werden vor allem verschiedene Branches besser visualisiert, ich verwende seit dem Lernen dieser Option nur mehr diese Ansicht, da sie echt hilft um Commits in verschiedenen Zweigen einfach zu erkennen.
@@ -50,11 +52,15 @@ Diese Optionen können auch kombiniert werden, wodurch sich wirklich praktische 
 Die folgenden Aliase habe ich mir nicht selbst ausgedacht sondern aus einem StackOverflow-Post übernommen, der mir damals auch gezeigt hat wie man die Logs "grafisch" aufbereitet anzeigen lässt:
 ```
 [alias]
-lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
-lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-lg = lg1
+    lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    lg = lg1
 ```
 Ab jetzt kann man statt `git log` auch `git lg` schreiben und erhält die Formatierung die bei `lg1` definiert ist.
+
+### Unterschiede zwischen Versionen anzeigen
+Es ist natürlich möglich noch genauere Details zu den einzelnen **Commits** zu erhalten, indem man die Unterschiede (differences) anfordert: `git diff <hash>`. Hier gibt man 4-6 (je nachdem wie viele Commits im Repository existieren) an und erhält dann eine Ansicht über alle Veränderungen, die mittels dieses Commits hinzugefügt worden sind. Wichtig: Auch wenn eine Zeile verändert worden ist, gibt es keine direkte "Veränderung" - stattdessen wird es angezeigt als wäre die gesamte Zeile "gelöscht" und eine neue Zeile "eingefügt" worden, die sich dann nur in den veränderten Zeichen unterscheidet.
+Gerade zu Beginn war das sehr verwirrend, da ein Einrücken von 3 Zeilen insgesamt 6 Zeilen in dem **Diff** anzeigt: 3x das Löschen dieser Zeilen und 3x das Einfügen der gleichen Zeilen, nur mit mehr Abstand links. Zuerst war ich verwirrt da ich ja eigentlich nichts gelöscht hatte und ich brauchte einige Zeit um mich daran zu gewöhnen, dass dies die Art und Weise ist wie Git Änderungen vermerkt.
 
 
 
