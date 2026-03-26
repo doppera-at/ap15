@@ -39,6 +39,23 @@ Da man nicht immer alle Dateien synchronisieren möchte (wie zum Beispiel VSCode
 
 ## Infos zu aktuellem Stand oder Veränderungen erhalten
 Einer der wichtigsten Befehle bei der Nutzung von Git ist `git status`. Hiermit wird einem angezeigt welche Änderungen gemacht worden sind die noch nicht festgelegt worden sind. Bevor man pusht oder die Arbeit für den heutigen Tag beenden möchte lohnt sich ein Blick auf den aktuellen Status des Repositories, auch wenn man die Änderungen noch nicht pushen möchte.
+Um die vergangenen Änderungen einzusehen gibt es den Befehl `git log`. Mit diesem kann man sich die letzten gemachten Änderungen anzeigen lassen, mitsamt den Infos darüber *wann* eine Änderung von *wem* gemacht wurde und *was* sie beinhaltet - was allerdings in einer grafischen Oberfläche oftmals einfacher verständlich angezeigt wird (wobei auch hier gilt dass man flexibler bleibt wenn man sich mit der Anzeige im Terminal vertraut macht). Um die **History** besser visualisieren zu können gibt es noch zusätzliche Optionen mit denen man den Output dieses Befehls verändern kann:
+- `git log`: Zeigt die letzten Commits in der History einfach nacheinander an (mit den Pfeiltasten kann man weiter zurück navigieren, `q` beendet diese Ansicht)
+- `git log --graph`: Mit der `--graph`-Option werden vor allem verschiedene Branches besser visualisiert, ich verwende seit dem Lernen dieser Option nur mehr diese Ansicht, da sie echt hilft um Commits in verschiedenen Zweigen einfach zu erkennen.
+- `git log --abbrev-commit`: Mit dieser Option werden die **Commit-Hashes** die zur eindeutigen Identifizierung dienen verkürzt (als Info: Um ein Commit genauer anzusehen reicht es meistens die ersten 6 Zeichen einzugeben)
+- `git log --oneline`: Diese Option reduziert die Menge an Informatioen auf eine einzige Zeile, sehr gut um einen Überblick zu erhalten - für mich auch der Standard inzwischen
+
+### Aliase definieren
+Diese Optionen können auch kombiniert werden, wodurch sich wirklich praktische Befehle ergeben - diese immer wieder einzugeben kann anstrengend sein, weshalb es sich anbietet dafür ein `alias` zu definieren. Dies kann mittels der Datei `.gitconfig` gemacht werden, die sich im **Home-Directory** befindet: Unter Linux in `/home/user/.gitconfig`, in Windows in `C:/Users/user/.gitconfig` bzw. `C:/Benutzer/user/.gitconfig`.
+Die folgenden Aliase habe ich mir nicht selbst ausgedacht sondern aus einem StackOverflow-Post übernommen, der mir damals auch gezeigt hat wie man die Logs "grafisch" aufbereitet anzeigen lässt:
+```
+[alias]
+lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
+lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+lg = lg1
+```
+Ab jetzt kann man statt `git log` auch `git lg` schreiben und erhält die Formatierung die bei `lg1` definiert ist.
+
 
 
 ## Änderungen vornehmen
