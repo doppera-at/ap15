@@ -38,6 +38,9 @@ Da man nicht immer alle Dateien synchronisieren möchte (wie zum Beispiel VSCode
 
 
 ## Änderungen vornehmen
+Ganz gleich wie man Dateien jetzt genau verändert (VSCode, Visual Studio, Neovim oder sogar Notepad), löscht oder erstellt, Git erkennt diese Änderungen automatisch. Wie viele Änderungen in einem einzelnen `Commit` zusammengefasst werden ist Geschmackssache und wird unterschiedlich gehandhabt, mit Quellen die sagen dass die Commits "so klein als möglich" sein sollten, während Andere wieder von "vollständig zusammenhängenden Ánderungen" sprechen. Grundsätzlich gilt es eine Balance zu finden: Nicht jede Zeile einzeln zu committen, aber auch nicht ein ganzes Feature fertig zu programmieren (dafür bieten sich `Branches` eigentlich an, dazu später mehr).
+Ein Commit ist nicht auf eine einzelne Datei gebunden und kann auch mehrere Dateien betreffen - wenn man zum Beispiel auf einer Webseite ein neues Div einfügt und dafür natürlich auch ein CSS-styling bereitstellt, so bietet es sich an diese beiden Änderungen gemeinsam zu committen anstatt jede Datei für sich genommen committed. Hier gilt es Git so viel wie möglich in seinen Workflow zu integrieren um langsam ein Gefühl für das ganze System zu bekommen und auch (wenn möglich) bei Kollegen nachzufragen wie Diese es so handhaben. Auch gibt es manchmal unterschiede der Handhabung von Firma zu Firma, also sollte man sich ohnehin immer nach den Gepflogenheiten erkundigen.
+
 ### Staging
 ### Commits
 ### Fetch
