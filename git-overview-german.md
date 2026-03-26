@@ -103,8 +103,28 @@ Mit der Funktionsweise eines `Rebase` habe ich leider auch noch nicht viel Erfah
 
 
 ## Branches
+Das Konzept von **Zweigen** ist ein tief in Git verankertes Thema: Direkt beim initialisieren eines Repositories wird bereits ein **Branch** erstellt der meistens `main` oder `master` heißt (wobei der Standard früher "master" war, sich inzwischen jedoch auf "main" gewechselt hat). Dieser Hauptzweig beinhaltet meist eine stabile, getestete Version der Software, während die Entwicklung dann auf anderen Zweigen stattfindet. Oft gibt es einen `dev`-branch der für die Entwicklung von der nächsten Version verwendet wird, während von diesem noch weitere Zweige weggehen, auf der dann einzelne Features entwickelt werden. Grundsätzlich bietet es sich an einen neuen Branch zu erstellen wenn man an einer neuen Version arbeitet (wie zum Beispiel ein Branch, der für die Entstehung dieses Dokuments zuständig ist - Disclaimer: Ich vergesse leider sehr gern bei privaten Repos darauf neue Branches anzulegen ^^"). Der Vorteil dabei ist, speziell bei Projekten die von fremden Personen genutzt wird wie bei OpenSource-Software, dass Änderungen die noch nicht fertiggestellt sind (wie auch hier in diesem Dokument der Fall) sich nicht sofort, aber eben nur teilweise, öffentlich im Repo befinden, sondern erst auf den Hauptzweig gelangen, wenn die Entwicklung fertiggestellt ist.
+
 ### Erstellen
-### Zu einem Branch wechseln
-### Merging - Änderungen zusammenführen
-### Rebase
+Um einen neuen Branch zu erstellen gibt es mehrere Methoden (wobei diese Beiden nicht die Einzigen sind): `git branch <name>` und `git checkout -b <name>`, wobei der erste Befehl nur einen Branch erstellt, der Zweite zusätzlich die lokalen Dateien an diesen Branch auch direkt anpasst.
+
+### Checkout
+Bei mehreren Branches kann man auch zwischen ihnen hin und herwechseln, was mit `git checkout <branch-name>` möglich ist. Hierbei spiegeln die lokalen Dateien den aktuellen Zustand dieses Zweiges wieder.
+Hat man also 2 Branches die an 2 unterschiedlichen Dateien Veränderungen vornehmen, so kann man hin- und her wechseln: Bei einem Branch ist `Datei1` anders aber `Datei2` unverändert, bei dem anderen Branch ist es umgekehrt.
+
+### Beispiel
+```
+MAIN ==> o --- o --- o --- o --- o --- o ==>
+                      \
+        Feature ==>    o --- o --- o --- o ==>
+```
+Hier wurde beim dritten Commit (dem dritten `o`) ein Branch names "Feature" erstellt. In diesem Branch befindet sich der Zustand von Main, der bei den ersten 3 Commits vorhanden war, wie als wenn eine Kopie des "Main-Branch" erstellt wird. Demnach kann man an diesem Branch vom Stand aus weiterarbeiten, der bei der Erstellung des Branch geherrscht hat, weiterarbeiten. In diesem Beispiel wurden 3 Commits auf diesen Branch gemacht, während andere Commits auf dem Main-Branch gemacht worden sind - diese zwei Versionen weichen nun voneinander ab: "Main" hat 3 Veränderungen die nicht im "Feature" vorhanden sind und umgekehrt.
+Würde man mit einem `checkout` von **Main** zu **Feature** wechseln, so sind die 3 Änderungen die auf dem *Main-Branch* gemacht worden sind, nicht mehr sichtbar - so als hätte es nie eine Veränderung gegeben. Dafür sind die Änderungen die im *Feature-Branch* gemacht worden sind da. Wechselt man nun wieder zurück auf *Main*, wo sind die Änderungen die im *Feature-Branch* gemacht worden sind verschwunden, dafür hat man die Veränderungen die in *Main* vorhanden sind wieder auf dem Dateisystem. Die lokalen Dateien spiegeln tatsächlich den Zustand wieder der aktuell auf diesem *Branch* herrscht, so als hätte man 2 Versionen auf dem PC (nur dass man hier nur einen Ordner hat und man mittels einem Befehl zwischen diesen Versionen wechseln kann)
+
+```
+MAIN ==> o --- o --- o --- o --- o -- o -- o ==>
+                      \                   /
+        Feature ==>    o --- o --- o --- o ==>
+```
+Nach den 3 Veränderungen in "Feature" ist die Entwicklung abgeschlossen und die Änderungen wurden mit dem "Main-Branch" zusammengeführt - ab jetzt sind die 3 Änderungen die in "Main" vorgenommen und auch die 3 Änderungen die in "Feature" gemacht worden sind in "Main" kombiniert verfügbar. Dieser Merge ist auch in den Logs deutlich zu sehen und man kann genau nachvollziehen was passiert ist.
 
