@@ -1,5 +1,10 @@
 # Git Overview
 
+
+## TODO
+- Add section about graphical interfaces
+
+
 ## Git vs. GitHub
 Versionskontrolle ist in der Welt der Programmierung essentiell, mit **Git** als das meist genutzte VCS-Tool und **GitHub** als der populärste Hosting-Dienst. Auch wenn diese beiden Themen (VCS und Hosting) in den meisten Fällen Hand-in-Hand gehen und deshalb inzwischen sogar oft synonym verwendet werden, ist es wichtig zu verstehen dass diese beiden Konzepte getrennt voneinander existieren. Es gibt noch weitere Systeme zur Versionskontrolle (anstelle von Git) und noch viel mehr Hosting-Provider (anstelle von GitHub).
 
