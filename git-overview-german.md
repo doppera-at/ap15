@@ -70,14 +70,25 @@ Ganz gleich wie man Dateien jetzt genau verändert (VSCode, Visual Studio, Neovi
 Ein Commit ist nicht auf eine einzelne Datei gebunden und kann auch mehrere Dateien betreffen - wenn man zum Beispiel auf einer Webseite ein neues Div einfügt und dafür natürlich auch ein CSS-styling bereitstellt, so bietet es sich an diese beiden Änderungen gemeinsam zu committen anstatt jede Datei für sich genommen committed. Hier gilt es Git so viel wie möglich in seinen Workflow zu integrieren um langsam ein Gefühl für das ganze System zu bekommen und auch (wenn möglich) bei Kollegen nachzufragen wie Diese es so handhaben. Auch gibt es manchmal unterschiede der Handhabung von Firma zu Firma, also sollte man sich ohnehin immer nach den Gepflogenheiten erkundigen.
 
 ### Staging
-Nachdem Änderungen vorgenommen worden sind, werden sie mit `git status` als **unstaged** gezeigt - das bedeutet, dass diese Veränderungen noch nicht für ein **Commit** vorgesehen sind. Um diese in ein **Commit** aufzunhemen, muss man sie erst hinzufügen: `git add filename.ext`. Damit werden alle Änderungen dieser Datei "gestaged", also für ein Kommitment vorgesehen. Hat man unabsichtlich eine Datein in diesen Zustand versetzt und möchte das zurücknehmen, kann man das mit `git restore --staged filename.ext` machen: der Befehl `restore` ist für weit mehr gut als nur Änderungen zurückzunehmen, weshalb mit der Flag `--staged` erst klargestellt wird, dass sich dieses Zurücksetzen auf Änderungen bezieht die sich grade im **Staging** befinden.
-Wenn man alle getrackten Dateien stagen möchte, kann man das mit `git add .` machen - der Punkt steht hier für "Alles in diesem Ordner und darunter" und kann mitunter nicht **alle** Dateien betreffen wenn man sich in einem Unterordner befindet.
+Als *Staging* bezeichnet man einen Zwischenbereich zwischen *gemachten* und *festgeschriebenen* Änderungen. Nachdem Änderungen vorgenommen worden sind werden Sie in `git status` entweder als **unstaged** oder **untracked** bezeichnet: Der Unterschied liegt darin, dass sich **untracked** Dateien noch garnicht im *Git-Repo* befinden, **unstaged** aber Dateien betrifft die bereits hinzugefügt worden sind.
+
+### Hinzufügen von Änderungen und Dateien
+Um eine neue Datei in *Git* aufzunehmen, muss sie erst mit `git add dateiname.end` hinzugefügt werden, damit *Git* von der Existenz dieser Datei weiß und sie beobachtet.
+Bei Änderungen gibt es verschiedenste Möglichkeiten, wobei die (von mir) am Häufigsten genutzten die Folgenden sind:
+- `git add dateiname.end`: Fügt alle Änderungen die in dieser Datei vorgenommen worden sind zum **Staging** hinzu
+- `git add .`: Fügt alle Änderungen die in allen Dateien vorgenommen worden sind, die sich im aktuellen Ordner oder Unterordnern befinden, hinzu.
+- `git add -p` (`--patch`): Gibt die Möglichkeit Blöcke von Änderungen individuell hinzuzufügen oder noch "liegen zu lassen" - speziell wenn man Änderungen in 2 separaten Commits übernehmen möchte sehr hilfreich! Ist ein Block zu groß, kann man ihn mit der Taste `s` in kleinere Teile spalten wenn sich in ihm auch unveränderte Zeilen befinden. Möchte man einen Block teilen wo die veränderten Zeilen jedoch direkt aufeinander folgen, kann man mit der Taste `e` in den *Edit*-Modus gehen, wodurch sich ein Editor öffnet wo man die Zeilen einfach löscht die man nicht hinzufügen möchte.
+- `git add -i` (`--interactive`): Interaktiver Modus in dem man mittels eines Menüs durch die einzelnen Dateien gehen und Änderungsblöcke übernehmen kann - leider kann ich dazu nicht viel sagen, da ich diesen Modus bisher noch nie verwendet habe, dachte aber es ist gut zu wissen dass es ihn gibt.
+
+### Zurücknehmen von Änderungen
+Hat man unabsichtlich eine falsche Datei hinzugefügt und möchte sie aus dem *Staging-Bereich* wieder entfernen, kann man das mit `git restore --staged dateiname.end` machen, was die Datei aus diesem Bereich entfernt.
+TODO: Add information about `restore` in general
 
 ### Commits
 Hat man sich dafür Entschieden Änderungen auch wirklich durchzuführen, dann kann man sich zu ihnen kommitten, was alle Veränderungen mit einer Nachricht versieht und in die **Git-History** übernimmt. Dafür gibt es mehrere Wege, die folgende Aufzählung ist nur ein kleiner Aufzug und um alle Möglichkeiten auszuschöpfen kann man sich gerne mehr mit diesem Befehl auseinandersetzen:
 - `git commit`: Öffnet den als Standard definierten Editor, in dem man seine Nachricht schreibt.
 - `git commit -m "Beschreibung der gemachten Änderungen"`: Überspringt das Öffnen des Editors, indem man die **Commit-Nachricht** direkt mit angibt.
-- `git commit -a -m "Beschreibung aller Änderungen"`: Anstatt Dateien zuerst in den **Staged**-Zustand zu versetzen, kann mittels `-a` auch angegeben werden dass man alle Änderungen committen möchte.
+- `git commit -a -m "Beschreibung aller Änderungen"`: Anstatt Dateien zuerst in den **Staged**-Zustand zu versetzen, kann mittels `-a` auch angegeben werden dass man alle Änderungen von bereits getrackten Dateien committen möchte.
 Commit-Nachrichten sollten kurz und prägnant über das, was in diesem **Commit** verändert wurde, informieren - wobei es auch hier wieder die verschiedensten Meinungen gibt wie detailliert Commit-Nachrichten sein sollen. Jedoch gibt es schon ein paar Regeln die sich im Laufe der Zeit herauskristallisiert haben und an die man sich halten sollte, um eine gemeinsame Struktur beizubehalten:
 - Die erste Zeile beinhaltet eine kurze, stichwortartige Zusammenfassung was passiert ist, beginnend mit einem Verb: `add functionality to sort products by price`
 - Eine leere Zeile trennt diesen kurzen Überblick
