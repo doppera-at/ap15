@@ -38,7 +38,8 @@ Da man nicht immer alle Dateien synchronisieren möchte (wie zum Beispiel VSCode
 
 
 ## Infos zu aktuellem Stand oder Veränderungen erhalten
-Einer der wichtigsten Befehle bei der Nutzung von Git ist `git status`. Hiermit wird einem angezeigt welche Änderungen gemacht worden sind die noch nicht festgelegt worden sind. Bevor man pusht oder die Arbeit für den heutigen Tag beenden möchte lohnt sich ein Blick auf den aktuellen Status des Repositories, auch wenn man die Änderungen noch nicht pushen möchte.
+Einer der wichtigsten Befehle bei der Nutzung von Git ist `git status`. Hiermit wird einem angezeigt welche Änderungen gemacht worden sind die noch nicht festgelegt worden sind. Bevor man *committed* oder gar *pushed* sollte man unbedingt den aktuellen Status des lokalen Repositories überprüfen - bei *commit* kann es sein, dass man mehrere Dateien zusammenfassen würde obwohl eine Trennung der Änderungen Sinn machen würde, bei *push* könnte man auf Änderungen vergessen haben, die man eben noch nicht *committed* hat.
+
 
 ### Die Commit-History anzeigen
 Um die vergangenen Änderungen einzusehen gibt es den Befehl `git log`. Mit diesem kann man sich die letzten gemachten Änderungen anzeigen lassen, mitsamt den Infos darüber *wann* eine Änderung von *wem* gemacht wurde und *was* sie beinhaltet - was allerdings in einer grafischen Oberfläche oftmals einfacher verständlich angezeigt wird (wobei auch hier gilt dass man flexibler bleibt wenn man sich mit der Anzeige im Terminal vertraut macht). Um die **History** besser visualisieren zu können gibt es noch zusätzliche Optionen mit denen man den Output dieses Befehls verändern kann:
